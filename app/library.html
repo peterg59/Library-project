@@ -1,0 +1,39 @@
+<label>Titre:</label> 
+<input ng-model = "recherche.titre">
+<label>Auteur:</label>
+<input ng-model = "recherche.auteur">
+<label>Type:</label>
+<input ng-model = "recherche.type">
+<!-- <input ng-model = "search.text"/>  -->
+<table class = "table">
+<thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Type</th>
+    </tr>
+</thead>
+<tbody>
+
+</tbody>
+<tr ng-repeat="book in list | filter:recherche">
+	<td ng-bind = "book.id"> </td>
+	<td> <img src = "http://192.168.1.16:8090/resource/media.recherche" ></td>
+	<td ng-bind = "book.titre"></td>
+	<td ng-bind = "book.auteur"></td>
+	<td ng-bind = "book.type"></td>
+		<!-- <span star-directive = "personne"></span> -->
+	<td> <a href ="#!/library/{{book.id}}">OUVRIR</a></td>
+</tr>
+</table>
+
+Click me: <input type="checkbox" ng-model="checked">
+<br/>
+ngShow:
+<span ng-show="checked">
+Affiché quand la checkbox est cochée.
+</span> <br/>
+ngHide:
+<span ng-hide="checked">
+Masqué
