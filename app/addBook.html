@@ -1,0 +1,16 @@
+<a href = "#!/library">REVENIR LISTE</a>
+
+<h1>Add a book to the library</h1>
+
+<form novalidate>
+    <label>Title: 
+    <input type="text" ng-model="book.titre" />
+    </label>
+    <label>Author: 
+    <input type="text" ng-model="book.auteur" />
+    </label>
+    <label>Type: 
+    <input type="text" ng-model="book.type" />
+    </label>
+    <input type="button" ng-click="add()" value = "Add the Book"/>
+</form>

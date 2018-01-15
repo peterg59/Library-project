@@ -1,39 +1,50 @@
+<h1>The Pierre Library</h1>
+<img src = "Book.png">
+
 <label>Titre:</label> 
-<input ng-model = "recherche.titre">
+<input ng-model="recherche.titre">
+
 <label>Auteur:</label>
-<input ng-model = "recherche.auteur">
+<input ng-model="recherche.auteur">
+
 <label>Type:</label>
-<input ng-model = "recherche.type">
-<!-- <input ng-model = "search.text"/>  -->
+<input ng-model="recherche.type">
+
+<label>Filtrer par:</label>
+<select name = "singleSelect" ng-model="tri">
+	<option value="titre">Titre</option>
+    <option value="auteur">Auteur</option>
+    <option value="type">Type</option>
+</select>
+
+<br/>
+<a href="#!/library/add">AJOUTER</a>
+
 <table class = "table">
 <thead>
     <tr>
       <th scope="col">Id</th>
+      <th scope="col">Picture</th>
+      <th scope="col">Availability</th>
       <th scope="col">Title</th>
       <th scope="col">Author</th>
       <th scope="col">Type</th>
+      <th scope="col">Return Date</th>
     </tr>
 </thead>
 <tbody>
 
 </tbody>
-<tr ng-repeat="book in list | filter:recherche">
-	<td ng-bind = "book.id"> </td>
-	<td> <img src = "http://192.168.1.16:8090/resource/media.recherche" ></td>
-	<td ng-bind = "book.titre"></td>
-	<td ng-bind = "book.auteur"></td>
-	<td ng-bind = "book.type"></td>
-		<!-- <span star-directive = "personne"></span> -->
-	<td> <a href ="#!/library/{{book.id}}">OUVRIR</a></td>
+<tr ng-repeat="book in list | orderBy:tri | filter:recherche">
+	<td ng-bind="book.id"></td>
+	<td> <img src="http://192.168.1.14:8090/{{book.images.couverture}}" ></td>
+	<td ng-show="book.retour != undefined">Unavailable</td>
+	<td ng-show="book.retour == undefined">Available</td>
+	<td ng-bind="book.titre"></td>
+	<td ng-bind="book.auteur"></td>
+	<td ng-bind="book.type"></td>
+	<td ng-bind="book.retour"></td>
+	<td> <a href="#!/library/{{book.id}}">OUVRIR</a></td>
+	<td> <a href="#!/library/edit/{{book.id}}">MODIFIER</a></td>
 </tr>
 </table>
-
-Click me: <input type="checkbox" ng-model="checked">
-<br/>
-ngShow:
-<span ng-show="checked">
-Affiché quand la checkbox est cochée.
-</span> <br/>
-ngHide:
-<span ng-hide="checked">
-Masqué

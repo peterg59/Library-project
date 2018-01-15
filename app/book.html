@@ -4,16 +4,23 @@
 <thead>
     <tr>
       <th scope="col">Title</th>
+      <th scope="col">Picture</th>
+      <th scope="col">Availability</th>
       <th scope="col">Author</th>
       <th scope="col">Type</th>
+      <th scope="col">Return Date</th>
     </tr>
 </thead>
 <tbody>
 
 </tbody>
 <tr>
-	<td ng-bind = "book.titre"></td>
-	<td ng-bind = "book.auteur"></td>
-	<td ng-bind = "book.type"></td>
+	<td ng-bind="book.titre"></td>
+	<td><img src="http://192.168.1.14:8090/{{book.images.couverture}}" > </td>
+	<td ng-show="book.retour != undefined">Unavailable</td>
+	<td ng-show="book.retour == undefined">Available</td>
+	<td ng-bind="book.auteur"></td>
+	<td ng-bind="book.type"></td>
+	<td ng-bind="book.retour"></td>
 </tr>
 </table>
